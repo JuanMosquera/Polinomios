@@ -12,13 +12,15 @@ package hilera;
 public class NodoDoble 
 {
     private NodoDoble Li, Ld;
-    private Object dato;
+    private Object digito, signo, potencia;
     
-    NodoDoble(Object d)
+    NodoDoble(Object s, Object d, Object p)
     {
         Li = null;
         Ld = null;
-        dato = d;
+        signo = s;
+        digito = d;
+        potencia = p;
     }
 
     public NodoDoble retornaLi() {
@@ -37,12 +39,28 @@ public class NodoDoble
         Ld = x;
     }
 
-    public Object retornaDato() {
-        return dato;
+    public Object retornaDigito() {
+        return digito;
     }
 
-    public void asignaDato(Object d) {
-        dato = d;
+    public void asignaDigito(Object d) {
+        digito = d;
+    }
+    
+    public Object retornaSigno() {
+        return signo;
+    }
+
+    public void asignaSigno(Object s) {
+        signo = s;
+    } 
+    
+    public Object retornaPotencia() {
+        return potencia;
+    }
+
+    public void asignaPotencia(Object p) {
+        potencia = p;
     }   
 }
 
