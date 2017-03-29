@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hilera;
+package polinomios;
 
 /**
  *probando
@@ -48,7 +48,10 @@ public class ListaDoblementeLigada{
         {
             while(!finDeRecorrido(p))
             {
-                System.out.println(p.retornaDato());;
+                System.out.println(p.retornaSigno());
+                System.out.println(p.retornaDigito());
+                System.out.println("X");
+                System.out.println(p.retornaPotencia());
                 p = p.retornaLd();
             }
         }
@@ -64,7 +67,10 @@ public class ListaDoblementeLigada{
         p = ultimoNodo();
         while(!finDeRecorrido(p))
         {
-            System.out.println(p.retornaDato());
+            System.out.println(p.retornaSigno());
+            System.out.println(p.retornaDigito());
+            System.out.println("X");
+            System.out.println(p.retornaPotencia());
             p = p.retornaLi();
         }
     }
@@ -82,10 +88,10 @@ public class ListaDoblementeLigada{
         return y;
     }
     
-    public void insertar(Object d, NodoDoble y) //Inserta un nuevo nodo con objecto d
+    public void insertar(Object s, Object d, Object p, NodoDoble y) //Inserta un nuevo nodo con objecto d
     {
         NodoDoble x;
-        x = new NodoDoble(d);
+        x = new NodoDoble(s, d, p);
         conectar(x,y);
     }
     
