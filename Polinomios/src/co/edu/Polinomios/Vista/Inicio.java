@@ -52,6 +52,11 @@ public class Inicio extends javax.swing.JFrame {
         labelPolinomioIngreso2.setText("Polinomio 2:");
 
         botonIngreso2.setText("Ingresar");
+        botonIngreso2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonIngreso2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelIngresoPolinomio2Layout = new javax.swing.GroupLayout(panelIngresoPolinomio2);
         panelIngresoPolinomio2.setLayout(panelIngresoPolinomio2Layout);
@@ -229,6 +234,12 @@ public class Inicio extends javax.swing.JFrame {
         labelPolinomio1.setText(campoPolinomio1.getText());
         campoPolinomio1.setText("");
     }//GEN-LAST:event_botonPolinomio1ActionPerformed
+
+    private void botonIngreso2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngreso2ActionPerformed
+        // TODO add your handling code here:
+        labelPolinomio2.setText(campoPolinomio2.getText());
+        campoPolinomio2.setText("");
+    }//GEN-LAST:event_botonIngreso2ActionPerformed
 
     /**
      * @param args the command line arguments
