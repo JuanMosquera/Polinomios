@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package polinomios;
+package co.edu.Polinomios.Modelo;
 
 /**
  *probando
@@ -80,7 +80,7 @@ public class ListaDoblementeLigada{
         NodoDoble p, y;
         p = primerNodo();
         y = p.retornaLi();
-        while(!finDeRecorrido(p) && (char)p.retornaDato()<(char)d)
+        while(!finDeRecorrido(p) && (char)p.retornaDigito()<(char)d)
         {
             y = p;
             p = p.retornaLd();
