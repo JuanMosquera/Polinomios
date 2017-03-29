@@ -275,13 +275,13 @@ public class Polinomio extends ListaDoblementeLigada
             NodoDoble dos = list2.primerNodo();
             
             while(!list1.finDeRecorrido(uno)){
-               result.buscaDondeInsertar(uno);
+               result.insertarN(uno);
                uno=uno.retornaLd();
             }
             
             
             while (!list2.finDeRecorrido(dos)) {
-               result.buscaDondeInsertar(dos);
+               result.insertarN(dos);
                dos=dos.retornaLd();
             }
             simplificar(result);
@@ -305,35 +305,35 @@ public class Polinomio extends ListaDoblementeLigada
             if(x.equals(b) && x.equals("-")){
                 r=a+b;
                 nuevo =new NodoDoble("-",r,uno.retornaPotencia());
-                result.buscaDondeInsertar(nuevo);
+                result.insertarN(nuevo);
                 
             }else if(x.equals(b) && x.equals("+")){
                 r=a+b;
                 nuevo =new NodoDoble("+",r,uno.retornaPotencia());
-                result.buscaDondeInsertar(nuevo);
+                result.insertarN(nuevo);
                 
             }else if(x.equals("+")){
                
                 if(a<b){
                     r=b-a;
                     nuevo =new NodoDoble("-",r,uno.retornaPotencia());
-                    result.buscaDondeInsertar(nuevo);
+                    result.insertarN(nuevo);
                     
                 }else{
                     r=a-b;
                     nuevo =new NodoDoble("+",r,uno.retornaPotencia());
-                    result.buscaDondeInsertar(nuevo);
+                    result.insertarN(nuevo);
                 } 
             }else{
          
                  if(a<b){
                     r=b-a;
                     nuevo =new NodoDoble("+",r,uno.retornaPotencia());
-                    result.buscaDondeInsertar(nuevo);
+                    result.insertarN(nuevo);
                 }else{
                     r=a-b;
                     nuevo =new NodoDoble("-",r,uno.retornaPotencia());
-                    result.buscaDondeInsertar(nuevo);
+                    result.insertarN(nuevo);
                 }
             }
             result.borrar(uno);
