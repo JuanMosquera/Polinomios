@@ -119,4 +119,32 @@ public class Suma {
         
     }
     
+    public void derivada(ListaDoblementeLigada list){
+        NodoDoble uno=list.primerNodo();
+        
+        while(!list.finDeRecorrido(uno)){
+            
+            uno.asignaDigito(((int)uno.retornaPotencia()*(int)uno.retornaDigito()));
+            uno.asignaPotencia(((int)uno.retornaPotencia()-1));
+            //recordatorio en caso de que la potencia sea negativa?
+            
+            uno=uno.retornaLd();
+        }
+        
+    }
+    
+    public void integral(ListaDoblementeLigada list){
+         NodoDoble uno=list.primerNodo();
+        
+        while(!list.finDeRecorrido(uno)){
+            
+            uno.asignaDigito(((int)uno.retornaDigito()/(int)uno.retornaPotencia()));
+            uno.asignaPotencia(((int)uno.retornaPotencia()+1));
+            //recordatorio en caso de que la potencia sea negativa?
+            //recordatorio en caso de que la potencia sea cero
+            
+            uno=uno.retornaLd();
+        }
+    }
+    
 }
