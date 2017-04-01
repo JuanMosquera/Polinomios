@@ -15,7 +15,41 @@ public class Polinomio extends ListaDoblementeLigada
     
     public Polinomio(String polinomio)
     {
-        
+        double d;
+        int p;
+        char s;
+        polinomio = polinomio.toLowerCase();
+        polinomio = polinomio.replace(" ", "");
+        String[] fracciones = polinomio.split("+");
+        String[] digito = fracciones[1].split("x");
+        d = Double.parseDouble(digito[0]);
+        if(d<0)
+        {
+            s = '-';
+        }
+        else
+        {
+            s = '+';
+        }
+        p = Integer.parseInt(digito[1]);
+        insertar(s, d, p, null);
+        NodoDoble n = primerNodo();
+        for(int i = 1; i<fracciones.length; i++)
+        {
+            digito = fracciones[i].split("x");
+            d = Double.parseDouble(digito[0]);
+            if(d<0)
+            {
+                s = '-';
+            }
+            else
+            {
+                s = '+';
+            }
+            p = Integer.parseInt(digito[1]);
+            insertar(s, d, p, n);
+            n = n.retornaLd();
+        }        
     }
     
 //    public void construirHilera(String hilera)
