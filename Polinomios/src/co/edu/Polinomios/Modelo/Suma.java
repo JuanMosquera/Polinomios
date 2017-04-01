@@ -156,6 +156,7 @@ public class Suma {
         
         while(!list.finDeRecorrido(nod)){
             result= (int) Math.pow(((int)nod.retornaDigito()*x), (int)nod.retornaPotencia());
+            nod=nod.retornaLd();
         }
         return result;
     }
