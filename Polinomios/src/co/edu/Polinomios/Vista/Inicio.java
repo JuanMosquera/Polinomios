@@ -1,21 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.Polinomios.Vista;
 
-/**
- *
- * @author marioh.ramirez
- */
+import co.edu.Polinomios.Controlador.Controlador;
+
 public class Inicio extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Inicio
-     */
+    Controlador controlador;
     public Inicio() {
         initComponents();
+        controlador = new Controlador();
     }
 
     /**
@@ -234,7 +226,8 @@ public class Inicio extends javax.swing.JFrame {
     private void botonPolinomio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPolinomio1ActionPerformed
         // TODO add your handling code here:
         labelPolinomio1.setText(campoPolinomio1.getText());
-        campoPolinomio1.setText("");
+        controlador.crearPolinomio(campoPolinomio1.getText());
+        campoPolinomio1.setText("");        
     }//GEN-LAST:event_botonPolinomio1ActionPerformed
 
     private void botonIngreso2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngreso2ActionPerformed
