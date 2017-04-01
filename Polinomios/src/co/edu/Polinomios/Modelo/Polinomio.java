@@ -5,7 +5,18 @@ package co.edu.Polinomios.Modelo;
  */
 public class Polinomio extends ListaDoblementeLigada 
 {      
-    public Polinomio(){}//Constructor de la clase Hilera
+    public Polinomio()
+    {
+        char s = 0;
+        double d = 0;
+        int p = 0;
+        insertar(s, d, p, null);
+    }
+    
+    public Polinomio(String polinomio)
+    {
+        
+    }
     
 //    public void construirHilera(String hilera)
 //    {
