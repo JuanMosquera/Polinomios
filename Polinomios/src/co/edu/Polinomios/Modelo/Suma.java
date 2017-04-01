@@ -12,6 +12,7 @@ package co.edu.Polinomios.Modelo;
 public class Suma {
     
     
+    
     public void suma(ListaDoblementeLigada list1, ListaDoblementeLigada list2){
        
         ListaDoblementeLigada result = new ListaDoblementeLigada();
@@ -120,6 +121,7 @@ public class Suma {
     }
     
     public void derivada(ListaDoblementeLigada list){
+        //ingresar un condicional para cuando la derivada llege cero
         NodoDoble uno=list.primerNodo();
         
         while(!list.finDeRecorrido(uno)){
@@ -147,4 +149,45 @@ public class Suma {
         }
     }
     
+    public int evaluar(ListaDoblementeLigada list, int x){
+        NodoDoble nod;
+        int result = 0;
+        nod=list.primerNodo();
+        
+        while(!list.finDeRecorrido(nod)){
+            result= (int) Math.pow(((int)nod.retornaDigito()*x), (int)nod.retornaPotencia());
+        }
+        return result;
+    }
+    
+    public void nderivada(ListaDoblementeLigada list, int n){
+        
+        for (int i = 0; i < n; i++) {
+            this.derivada(list);
+        }
+        
+        //ingresar un condicional para cuando la derivada llege cero
+    }
+    
+    public int integralDef(ListaDoblementeLigada list, int x, int y){
+        
+        this.integral(list);
+        int a = this.evaluar(list, x);
+        int b = this.evaluar(list, y);
+        int r = a-b;
+        return r;
+        
+    }
+    
+    public String esFactor(ListaDoblementeLigada list, int c){
+       
+        int x = this.evaluar(list, c);
+        if (x==0) {
+            return "Es factor";
+        } else {
+            return "No es factor";
+        }
+    }
+    
+    //faltaria borrar polinomio
 }
