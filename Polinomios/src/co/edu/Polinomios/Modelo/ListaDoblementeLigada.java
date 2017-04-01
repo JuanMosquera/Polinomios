@@ -1,14 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.Polinomios.Modelo;
-
-/**
- *probando
- * @author jfwc1
- */
 
 public class ListaDoblementeLigada{
     
@@ -48,10 +38,13 @@ public class ListaDoblementeLigada{
         {
             while(!finDeRecorrido(p))
             {
-                System.out.println(p.retornaSigno());
-                System.out.println(p.retornaDigito());
-                System.out.println("X");
-                System.out.println(p.retornaPotencia());
+                System.out.print(p.retornaSigno());
+                System.out.print(p.retornaDigito());
+                if((int)p.retornaPotencia()!=0)
+                {
+                    System.out.print("x^");
+                    System.out.print(p.retornaPotencia());
+                }
                 p = p.retornaLd();
             }
         }

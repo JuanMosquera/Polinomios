@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.Polinomios.Modelo;
 
-/**
- *
- * @author jfwc1
- */
 public class NodoDoble 
 {
     private NodoDoble Li, Ld;
@@ -23,43 +14,53 @@ public class NodoDoble
         potencia = p;
     }
 
-    public NodoDoble retornaLi() {
+    public NodoDoble retornaLi() 
+    {
         return Li;
     }
 
-    public void asignaLi(NodoDoble x) {
+    public void asignaLi(NodoDoble x) 
+    {
         Li = x;
     }
 
-    public NodoDoble retornaLd() {
+    public NodoDoble retornaLd() 
+    {
         return Ld;
     }
 
-    public void asignaLd(NodoDoble x) {
+    public void asignaLd(NodoDoble x) 
+    {
         Ld = x;
     }
 
-    public Object retornaDigito() {
+    public Object retornaDigito() 
+    {
         return digito;
     }
 
-    public void asignaDigito(Object d) {
+    public void asignaDigito(Object d) 
+    {
         digito = d;
     }
     
-    public Object retornaSigno() {
+    public Object retornaSigno() 
+    {
         return signo;
     }
 
-    public void asignaSigno(Object s) {
+    public void asignaSigno(Object s) 
+    {
         signo = s;
     } 
     
-    public Object retornaPotencia() {
+    public Object retornaPotencia() 
+    {
         return potencia;
     }
 
-    public void asignaPotencia(Object p) {
+    public void asignaPotencia(Object p) 
+    {
         potencia = p;
     }   
 }
