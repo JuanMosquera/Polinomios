@@ -13,7 +13,7 @@ public class separarString {
     
     public static void main(String[] args) {
         
-        String polinomio=" x -3x2 -.5x3 -3.1x5 +2x +2 +x +x2";
+        String polinomio=" x + 2x3 -3x2 -1 +2x +x +1";
         
         String[] letras;
         int c;
@@ -46,56 +46,70 @@ public class separarString {
             
             for (int i=1;i<fracciones.length;i++) {
                String[] digito = fracciones[i].split("x");
+               System.out.println(digito.length);
         //                     System.out.println(fracciones[i]);
               // System.out.println(digito[0]);
 
-                if (digito.length==0) {
-                    
-                    letras[j]="1";
-                    j++;
-                    letras[j]="1";
-                    j++;
-                            
-                } else {
+                 if (digito.length==2) {
                     letras[j]=digito[0];
                     j++;
-                    if(digito.length==2) {
-                        System.out.println(digito[1]);
-                        letras[j]=digito[1];
+//                        System.out.println(digito[1]);
+                    letras[j]=digito[1];
+                    j++;
+                   
+                            
+                } else if(digito.length==1) {
+                     letras[j]=digito[0];
+                    j++;
+                    if (fracciones[i].indexOf("x")==(-1)) {
+                        letras[j]="0";
                         j++;
-                    }else{
+                   } else {
                         letras[j]="1";
                         j++;
-                    }        
-                }
+                   }
+                    
+                }else{
+                    letras[j]="1";
+                    j++;
+                    letras[j]="1";
+                    j++;
+                }  
             }
+            
         } else {
             
             for (int i=0;i<fracciones.length;i++) {
                String[] digito = fracciones[i].split("x");
+               System.out.println(digito.length);
         //                     System.out.println(fracciones[i]);
                // System.out.println(digito[0]);
 
-                if (digito.length==0) {
-                    
-                    letras[j]="1";
-                    j++;
-                    letras[j]="1";
-                    j++;
-                            
-                } else {
+               if (digito.length==2) {
                     letras[j]=digito[0];
                     j++;
-                    if(digito.length==2) {
-                        System.out.println(digito[1]);
-                        letras[j]=digito[1];
+//                        System.out.println(digito[1]);
+                    letras[j]=digito[1];
+                    j++;
+                   
+                            
+                } else if(digito.length==1) {
+                     letras[j]=digito[0];
+                    j++;
+                    if (fracciones[i].indexOf("x")==(-1)) {
+                        letras[j]="0";
                         j++;
-                    }else{
+                   } else {
                         letras[j]="1";
                         j++;
-                    }        
+                   }
+                    
+                }else{
+                    letras[j]="1";
+                    j++;
+                    letras[j]="1";
+                    j++;
                 }
-                          
             }
         }
         
