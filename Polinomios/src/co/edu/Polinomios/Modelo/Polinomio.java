@@ -419,7 +419,7 @@ public class Polinomio extends ListaDoblementeLigada
     public Polinomio suma(Polinomio polinomio)
     {
        Polinomio resultado;
-       NodoDoble p,q, o;
+       NodoDoble p,q, o, nodo;
        Double d;
        int longitudP,longitudQ;
        resultado = new  Polinomio();
@@ -439,16 +439,43 @@ public class Polinomio extends ListaDoblementeLigada
         while (p!=null)
         {
             d = (Double)p.retornaDigito();
-            if(p.retornaPotencia()==q.retornaPotencia())
-            {
-                d = d+(Double)q.retornaDigito();
-                q = q.retornaLd();
-            }
-            System.out.println("hola");
+//            if(p.retornaPotencia()==q.retornaPotencia())
+//            {
+//                d = d+(Double)q.retornaDigito();
+//                q = q.retornaLd();
+//            }
+//            System.out.println("hola");
             o = resultado.buscaDondeInsertar(p.retornaPotencia());                      
             resultado.insertar(d, p.retornaPotencia(), o);
             p = p.retornaLd();           
         }
+        
+        while (q!=null)
+        {
+            d = (Double)q.retornaDigito();
+            o = resultado.buscaDondeInsertar(q.retornaPotencia());                      
+            resultado.insertar(d, q.retornaPotencia(), o);
+            q = q.retornaLd();           
+        }
+        
+        
+        
+        
+        nodo= resultado.primerNodo();
+        for (int i = 0; i < resultado.longitud()-1; i++) {
+            
+            if (nodo.retornaPotencia()==nodo.retornaLd().retornaPotencia()) {
+                System.out.println("son iguales");
+                nodo.asignaDigito((double)nodo.retornaDigito()+ (double)nodo.retornaLd().retornaDigito());
+                resultado.borrar(nodo.retornaLd());
+                i--;
+            }else {
+                nodo=nodo.retornaLd();
+            }
+        }
+        
+       
+        
         return resultado;        
     }
     
@@ -546,41 +573,39 @@ public class Polinomio extends ListaDoblementeLigada
             return false;
         }
     }
+  
     
-    public void simplificar(ListaDoblementeLigada list){
-        NodoDoble uno = list.primerNodo();
-        NodoDoble dos = uno.retornaLd();
-        
-        while(!list.finDeRecorrido(dos)){
-            
-            if(igualExp(uno,dos)){
-//                sumarNodo(uno,dos,list);
-            }else{
-                uno=uno.retornaLd();
-                dos=dos.retornaLd();
-            }
-        }
-        
-    }
-    
-    public void derivada(ListaDoblementeLigada list){
+   public void derivada(Polinomio list){
+        //ingresar un condicional para cuando la derivada llege cero
         NodoDoble uno=list.primerNodo();
         
         while(!list.finDeRecorrido(uno)){
-            
-            uno.asignaDigito(((int)uno.retornaPotencia()*(int)uno.retornaDigito()));
-            uno.asignaPotencia(((int)uno.retornaPotencia()-1));
-            //recordatorio en caso de que la potencia sea negativa?
+            if ((double)uno.retornaDigito()==0) {
+                //borrar ese nodo de la lista
+                if (list.longitud()!=1 || list.longitud()!=0 ) {
+                    list.borrar(uno);
+                }
+
+            } else {
+                if ((int)uno.retornaPotencia()==0) {
+                    uno.asignaDigito(0);
+                } else {
+                    uno.asignaDigito(((int)uno.retornaPotencia()*(double)uno.retornaDigito()));
+                    uno.asignaPotencia(((int)uno.retornaPotencia()-1));
+                    //recordatorio en caso de que la potencia sea negativa?
+                }
+            }
             
             uno=uno.retornaLd();
         }
+        list.recorreIzqDer();
         
     }
     
     public void integral(ListaDoblementeLigada list){
          NodoDoble uno=list.primerNodo();
         
-        while(!list.finDeRecorrido(uno)){
+        while(!finDeRecorrido(uno)){
             
             uno.asignaDigito(((int)uno.retornaDigito()/(int)uno.retornaPotencia()));
             uno.asignaPotencia(((int)uno.retornaPotencia()+1));
@@ -590,6 +615,27 @@ public class Polinomio extends ListaDoblementeLigada
             uno=uno.retornaLd();
         }
     }
+    
+    public double evaluar(float x){
+        NodoDoble nod;
+        double a,b,result = 0;
+        
+        nod=this.primerNodo();
+        
+        a=(double)nod.retornaDigito()*x;
+        b=(int)nod.retornaPotencia();
+        
+        while(!finDeRecorrido(nod)){
+            result=  Math.pow(b,a);
+            nod=nod.retornaLd();
+        }
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(result);
+        return result;
+        
+    }
+    
     
     
 }
