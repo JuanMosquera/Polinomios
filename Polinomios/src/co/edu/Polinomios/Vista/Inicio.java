@@ -547,14 +547,17 @@ public class Inicio extends javax.swing.JFrame {
         {
             case 0:
                 controlador.sumar();
+                labelResultado.setText("");
                 labelResultado.setText(controlador.imprimePolinomio(3));
                 break;
             case 1:
                 controlador.multiplicar();
+                labelResultado.setText("");
                 labelResultado.setText(controlador.imprimePolinomio(3));                
                 break;
             case 2:
                 
+                labelResultado.setText("");
                 labelResultado.setText(controlador.factor());      
                 
                 break;

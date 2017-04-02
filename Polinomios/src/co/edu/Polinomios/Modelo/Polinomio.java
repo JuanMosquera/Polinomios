@@ -679,11 +679,21 @@ public class Polinomio extends ListaDoblementeLigada
     
     public String esFactor(Polinomio list, Polinomio list2){
        
+        float d = (float) (double) list2.primerNodo().retornaDigito();
         float c = (float) (double) list2.ultimoNodo().retornaLi().retornaDigito();
+        float e=0;
+        
         System.out.println("el digito");
         System.out.println(c);
+        
+        if (d>1) {
+            e=c/d;
+        } else {
+            e=c;
+        }
+        
         double x;
-        x = list.evaluar(c);
+        x = list.evaluar(-e);
         if (x==0) {
             return "Es factor";
         } else {
