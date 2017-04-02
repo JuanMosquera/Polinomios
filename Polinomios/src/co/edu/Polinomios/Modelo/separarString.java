@@ -13,7 +13,7 @@ public class separarString {
     
     public static void main(String[] args) {
         
-        String polinomio=" x + 2x3 -3x2 -1 +2x +x +1";
+        String polinomio=" x2 + 2x3 -3x2 -1 +2x +x +1";
         
         String[] letras;
         int c;
