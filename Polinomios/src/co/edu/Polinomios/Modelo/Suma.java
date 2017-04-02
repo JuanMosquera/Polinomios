@@ -22,13 +22,12 @@ public class Suma {
             NodoDoble dos = list2.primerNodo();
             
             while(!list1.finDeRecorrido(uno)){
-               result.buscaDondeInsertar(uno);
                uno=uno.retornaLd();
             }
             
             
             while (!list2.finDeRecorrido(dos)) {
-               result.buscaDondeInsertar(dos);
+               result.buscaDondeInsertar(dos);//si sera el metodo para insertar un nodo
                dos=dos.retornaLd();
             }
             simplificar(result);
@@ -46,45 +45,51 @@ public class Suma {
         
             a=(int) uno.retornaDigito();
             b=(int) dos.retornaDigito();
-            x=(String) uno.retornaSigno();
-            y=(String) dos.retornaSigno();
-            
-            if(x.equals(b) && x.equals("-")){
-                r=a+b;
-                nuevo =new NodoDoble("-",r,uno.retornaPotencia());
-                result.buscaDondeInsertar(nuevo);
-                
-            }else if(x.equals(b) && x.equals("+")){
-                r=a+b;
-                nuevo =new NodoDoble("+",r,uno.retornaPotencia());
-                result.buscaDondeInsertar(nuevo);
-                
-            }else if(x.equals("+")){
-               
-                if(a<b){
-                    r=b-a;
-                    nuevo =new NodoDoble("-",r,uno.retornaPotencia());
-                    result.buscaDondeInsertar(nuevo);
-                    
-                }else{
-                    r=a-b;
-                    nuevo =new NodoDoble("+",r,uno.retornaPotencia());
-                    result.buscaDondeInsertar(nuevo);
-                } 
-            }else{
+//            x=(String) uno.retornaSigno();
+//            y=(String) dos.retornaSigno();
+
+
+        r=a+b;
+         nuevo =new NodoDoble(r,uno.retornaPotencia());
          
-                 if(a<b){
-                    r=b-a;
-                    nuevo =new NodoDoble("+",r,uno.retornaPotencia());
-                    result.buscaDondeInsertar(nuevo);
-                }else{
-                    r=a-b;
-                    nuevo =new NodoDoble("-",r,uno.retornaPotencia());
-                    result.buscaDondeInsertar(nuevo);
-                }
-            }
+//            
+//            if(x.equals(b) && x.equals("-")){
+//                r=a+b;
+//                nuevo =new NodoDoble("-",r,uno.retornaPotencia());
+//                result.buscaDondeInsertar(nuevo);
+//                
+//            }else if(x.equals(b) && x.equals("+")){
+//                r=a+b;
+//                nuevo =new NodoDoble("+",r,uno.retornaPotencia());
+//                result.buscaDondeInsertar(nuevo);
+//                
+//            }else if(x.equals("+")){
+//               
+//                if(a<b){
+//                    r=b-a;
+//                    nuevo =new NodoDoble("-",r,uno.retornaPotencia());
+//                    result.buscaDondeInsertar(nuevo);
+//                    
+//                }else{
+//                    r=a-b;
+//                    nuevo =new NodoDoble("+",r,uno.retornaPotencia());
+//                    result.buscaDondeInsertar(nuevo);
+//                } 
+//            }else{
+//         
+//                 if(a<b){
+//                    r=b-a;
+//                    nuevo =new NodoDoble("+",r,uno.retornaPotencia());
+//                    result.buscaDondeInsertar(nuevo);
+//                }else{
+//                    r=a-b;
+//                    nuevo =new NodoDoble("-",r,uno.retornaPotencia());
+//                    result.buscaDondeInsertar(nuevo);
+//                }
+//            }
             result.borrar(uno);
             result.borrar(dos);
+            result.buscaDondeInsertar(nuevo);//si sera el metodo para insertar un nodo
             uno=nuevo;
             dos=nuevo.retornaLd();
         
@@ -125,10 +130,20 @@ public class Suma {
         NodoDoble uno=list.primerNodo();
         
         while(!list.finDeRecorrido(uno)){
+            if ((int)uno.retornaDigito()==0) {
+                //borrar ese nodo de la lista
+            } else {
+                if ((int)uno.retornaPotencia()==0) {
+                    uno.asignaDigito(0);
+                } else {
+                    uno.asignaDigito(((int)uno.retornaPotencia()*(int)uno.retornaDigito()));
+                    uno.asignaPotencia(((int)uno.retornaPotencia()-1));
+                    //recordatorio en caso de que la potencia sea negativa?
+                }
+            }
+ 
             
-            uno.asignaDigito(((int)uno.retornaPotencia()*(int)uno.retornaDigito()));
-            uno.asignaPotencia(((int)uno.retornaPotencia()-1));
-            //recordatorio en caso de que la potencia sea negativa?
+           
             
             uno=uno.retornaLd();
         }
@@ -140,10 +155,15 @@ public class Suma {
         
         while(!list.finDeRecorrido(uno)){
             
-            uno.asignaDigito(((int)uno.retornaDigito()/(int)uno.retornaPotencia()));
-            uno.asignaPotencia(((int)uno.retornaPotencia()+1));
-            //recordatorio en caso de que la potencia sea negativa?
-            //recordatorio en caso de que la potencia sea cero
+           
+                uno.asignaPotencia(((int)uno.retornaPotencia()+1));
+                //sera que guarda tipo int o float por lo del punto flotante
+                uno.asignaDigito(((int)uno.retornaDigito()/(int)uno.retornaPotencia()));
+            
+                //recordatorio en caso de que la potencia sea negativa?
+            
+            
+            
             
             uno=uno.retornaLd();
         }
