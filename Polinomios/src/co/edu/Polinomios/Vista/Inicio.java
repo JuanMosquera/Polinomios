@@ -483,6 +483,23 @@ public class Inicio extends javax.swing.JFrame {
                 
                 break;
             case 4:
+                String ss=campoVariable.getText();
+                if (ss==null || "".equals(ss) || " ".equals(ss)) {
+                                    JOptionPane.showMessageDialog(null, "Debe ingresar un valor para evaluar");
+
+                }else{
+                int a = Integer.parseInt(ss);
+                
+                    if (listaPolinomio.getSelectedIndex()==0) {
+                        controlador.nderivada(0,a);
+                        labelResultado.setText(controlador.imprimePolinomio(0));
+                    } else {
+                        controlador.nderivada(1,a);
+                        labelResultado.setText(controlador.imprimePolinomio(1));
+                    }
+
+                }
+                
                 break;
             case 5:
                 if(listaPolinomio.getSelectedIndex()==0)
@@ -517,18 +534,19 @@ public class Inicio extends javax.swing.JFrame {
                 controlador.multiplicar();
                 labelResultado.setText(controlador.imprimePolinomio(3));                
                 break;
+            case 2:
+                
+                labelResultado.setText(controlador.factor());      
+                
+                break;
             case 3:
-                
-                
                 break;
             case 4:
                 break;
             case 5:
                 break;
-            case 6:
-                break;
-            default:
-                break;
+//            default:
+//                break;
         }
     }//GEN-LAST:event_botonAceptarOperacionEntrePolinomiosActionPerformed
 
