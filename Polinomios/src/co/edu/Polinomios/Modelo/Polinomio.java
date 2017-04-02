@@ -580,24 +580,30 @@ public class Polinomio extends ListaDoblementeLigada
         NodoDoble uno=list.primerNodo();
         
         while(!list.finDeRecorrido(uno)){
+            
             if ((double)uno.retornaDigito()==0) {
                 //borrar ese nodo de la lista
-                if (list.longitud()!=1 || list.longitud()!=0 ) {
+                if ( list.longitud()>1 ) {
                     list.borrar(uno);
                 }
 
             } else {
                 if ((int)uno.retornaPotencia()==0) {
-                    uno.asignaDigito(0);
+                    double m=0;
+                    uno.asignaDigito(m);
                 } else {
-                    uno.asignaDigito(((int)uno.retornaPotencia()*(double)uno.retornaDigito()));
+                    double m=((int)uno.retornaPotencia()*(double)uno.retornaDigito());
+                    uno.asignaDigito(m);
                     uno.asignaPotencia(((int)uno.retornaPotencia()-1));
                     //recordatorio en caso de que la potencia sea negativa?
                 }
             }
             
             uno=uno.retornaLd();
+            
+            
         }
+        System.out.println("derivada");
         list.recorreIzqDer();
         
     }
