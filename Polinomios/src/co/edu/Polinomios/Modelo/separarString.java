@@ -114,7 +114,7 @@ public class separarString {
         }
         
         System.out.println("letras");
-         for(int i=0;i<letras.length;i++)
+        for(int i=0;i<letras.length;i++)
         {
             if (letras[i]!=null) {
                  System.out.println(letras[i]);
