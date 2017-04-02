@@ -44,7 +44,7 @@ public class Controlador
             polinomio = resultado;
         }
         NodoDoble p = polinomio.primerNodo();
-        while(p!=polinomio.ultimoNodo())
+        while(!polinomio.finDeRecorrido(p))
         {
             if((Double)p.retornaDigito()>0)
             {
