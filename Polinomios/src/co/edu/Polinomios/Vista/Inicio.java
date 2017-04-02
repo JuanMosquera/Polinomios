@@ -415,33 +415,88 @@ public class Inicio extends javax.swing.JFrame {
             case 0:   
                 JOptionPane.showMessageDialog(null, "Debe elegir una de las opciones de la lista.");
                 break;
-            case 1:                 
+            case 1:       
+                
                 if(listaPolinomio.getSelectedIndex()==0)
                 {
-                    labelPolinomio1.setText("");
-                    campoPolinomio1.setEnabled(true);
-                    botonPolinomio1.setEnabled(true);
-                    listaOperacionesEntrePolinomios.setEnabled(false);
-                    botonAceptarOperacionEntrePolinomios.setEnabled(false);
+                    controlador.borrar(0);
+                    labelResultado.setText(controlador.imprimePolinomio(0));
                 }
                 else
                 {
-                    labelPolinomio2.setText("");
-                    campoPolinomio2.setEnabled(true);
-                    botonIngreso2.setEnabled(true);
-                    listaOperacionesEntrePolinomios.setEnabled(false);
-                    botonAceptarOperacionEntrePolinomios.setEnabled(false);
+                     controlador.borrar(1);
+                    labelResultado.setText(controlador.imprimePolinomio(1));
                 }
+                
+//                if(listaPolinomio.getSelectedIndex()==0)
+//                {
+//                    labelPolinomio1.setText("");
+//                    campoPolinomio1.setEnabled(true);
+//                    botonPolinomio1.setEnabled(true);
+//                    listaOperacionesEntrePolinomios.setEnabled(false);
+//                    botonAceptarOperacionEntrePolinomios.setEnabled(false);
+//                }
+//                else
+//                {
+//                    labelPolinomio2.setText("");
+//                    campoPolinomio2.setEnabled(true);
+//                    botonIngreso2.setEnabled(true);
+//                    listaOperacionesEntrePolinomios.setEnabled(false);
+//                    botonAceptarOperacionEntrePolinomios.setEnabled(false);
+//                }
                 break;
             case 2:
 //                controlador.evaluarPolinomio(listaOperacionesPolinomio.getSelectedIndex());
                 
+                String s=campoVariable.getText();
+                if (s==null || "".equals(s) || " ".equals(s)) {
+                                    JOptionPane.showMessageDialog(null, "Debe ingresar un valor para evaluar");
+
+                }else{
+                float a = Float.parseFloat(s);
+                
+                    if (listaPolinomio.getSelectedIndex()==0) {
+                        labelResultado.setText(Double.toString(controlador.evaluarP(a,0)));
+                    } else {
+                        labelResultado.setText(Double.toString(controlador.evaluarP(a,1)));
+                    }
+
+                }
+                
                 break;
             case 3:
+                if(listaPolinomio.getSelectedIndex()==0)
+                {
+                    controlador.derivar(0);
+                    labelResultado.setText(controlador.imprimePolinomio(0));
+                }
+                else
+                {
+                     controlador.derivar(1);
+                    labelResultado.setText(controlador.imprimePolinomio(1));
+                }
+//                labelPolinomio1.setText("");
+                campoPolinomio1.setEnabled(true);
+                botonPolinomio1.setEnabled(true);
+                    listaOperacionesEntrePolinomios.setEnabled(false);
+                    botonAceptarOperacionEntrePolinomios.setEnabled(false);
+                
                 break;
             case 4:
                 break;
             case 5:
+                if(listaPolinomio.getSelectedIndex()==0)
+                {
+                    controlador.integral(0);
+                    labelResultado.setText(controlador.imprimePolinomio(0));
+                }
+                else
+                {
+                     controlador.integral(1);
+                    labelResultado.setText(controlador.imprimePolinomio(1));
+                }
+                
+                
                 break;
             case 6:
                 break;
@@ -463,6 +518,8 @@ public class Inicio extends javax.swing.JFrame {
                 labelResultado.setText(controlador.imprimePolinomio(3));                
                 break;
             case 3:
+                
+                
                 break;
             case 4:
                 break;
