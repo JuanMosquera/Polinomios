@@ -44,13 +44,14 @@ public class Controlador
             polinomio = resultado;
         }
         NodoDoble p = polinomio.primerNodo();
+        double m=(double) p.retornaDigito();
         while(!polinomio.finDeRecorrido(p))
         {
-            if((Double)p.retornaDigito()>0)
+            if(m>0)
             {
                 if(p.retornaPotencia()==polinomio.primerNodo().retornaPotencia())
                 {
-                    if((Double)p.retornaDigito()==1)
+                    if((double)p.retornaDigito()==1)
                     {
                         d="";
                     }
@@ -112,4 +113,30 @@ public class Controlador
         resultado = polinomio1.multiplicar(polinomio2);
         resultado.recorreIzqDer();
     }
+    
+    public void derivar(int x){
+        
+        if (x==0) {
+            polinomio1.derivada(polinomio1);
+        } else if(x==1){
+            polinomio2.derivada(polinomio2);
+        }
+        
+        
+    
+    }
+    
+    public double evaluarP(float a, int x){
+        
+        double n=0;
+        if (x==0) {
+           n= polinomio1.evaluar(a);
+        } else if(x==1){
+            n= polinomio2.evaluar(a);
+        }
+        
+        
+        return n;
+    }
+    
 }
