@@ -18,7 +18,7 @@ public class Polinomio extends ListaDoblementeLigada
         double d;
         int p;
         letras = separarPolinomio(polinomio);
-        if(letras[0]=="")
+        if(letras[0].equals(""))
         {
             d = 1;
         }
@@ -29,8 +29,6 @@ public class Polinomio extends ListaDoblementeLigada
         p = Integer.parseInt(letras[1]);
         insertar(d, p, null);
         NodoDoble nodo = primerNodo();
-        System.out.println(nodo.retornaDigito());
-        System.out.println(nodo.retornaPotencia());
         for(int i=2;i<letras.length;i++)
         {
             if(letras[i].equals("+"))
@@ -43,22 +41,20 @@ public class Polinomio extends ListaDoblementeLigada
             }
             else
             {
-                d = Double.parseDouble(letras[i]);
-                i = i+1;
-                if(i==letras.length)
-                {
-                    break;
-                }
-                else
-                {
-                    p = Integer.parseInt(letras[i]);
-                }
+                d = Double.parseDouble(letras[i]);               
+            }
+            i = i+1;
+            if(i==letras.length)
+            {
+                break;
+            }                
+            else
+            {
+                p = Integer.parseInt(letras[i]);
             }
             insertar(d, p, nodo);
             nodo = nodo.retornaLd();
-            System.out.println("I: "+i+"Dato: "+letras[i]);
         }
-        recorreIzqDer();
     }
     
     public String[] separarPolinomio(String polinomio)
@@ -69,16 +65,9 @@ public class Polinomio extends ListaDoblementeLigada
         polinomio = polinomio.toLowerCase();
         polinomio = polinomio.replace("  ", "");
         polinomio = polinomio.replace(" ", "");
-        System.out.println(polinomio);
         polinomio = polinomio.replace("+", " +");
         polinomio = polinomio.replace("-", " -");
-        System.out.println(polinomio);       
         String[] fracciones = polinomio.split(" ");
-        for(int i=0;i<fracciones.length;i++)
-        {
-            System.out.println(fracciones[i]);
-        }
-        System.out.println("prueba");
         c=(fracciones.length)*2;
         letras= new String[c];
         j =0;
@@ -87,14 +76,10 @@ public class Polinomio extends ListaDoblementeLigada
             for (int i=1;i<fracciones.length;i++) 
             {
                String[] digito = fracciones[i].split("x");
-               System.out.println(digito.length);
-//               System.out.println(fracciones[i]);
-//               System.out.println(digito[0]);
                if (digito.length==2) 
                {
                     letras[j]=digito[0];
                     j++;
-//                        System.out.println(digito[1]);
                     letras[j]=digito[1];
                     j++;
                } 
@@ -127,14 +112,10 @@ public class Polinomio extends ListaDoblementeLigada
             for (int i=0;i<fracciones.length;i++) 
             {
                String[] digito = fracciones[i].split("x");
-               System.out.println(digito.length);
-//               System.out.println(fracciones[i]);
-//               System.out.println(digito[0]);
                if (digito.length==2) 
                {
                     letras[j]=digito[0];
                     j++;
-//                        System.out.println(digito[1]);
                     letras[j]=digito[1];
                     j++;
                } 
@@ -162,74 +143,23 @@ public class Polinomio extends ListaDoblementeLigada
                }
             }
         }
-        
-        System.out.println("letras");
-         for(int i=0;i<letras.length;i++)
-        {
-            if (letras[i]!=null) {
-                 System.out.println(letras[i]);
-            }else{
-                break;
-            }
-           
-        }
          return letras;
     }
     
-//    public void construirHilera(String hilera)
-//    {
-//        char letra;
-//        letra = hilera.charAt(0);
-////        insertar(letra,null);
-//        NodoDoble p = primerNodo();
-//        for(int i=1;i<hilera.length();i++) //Pasa el String a char y construye la hilera representada como Lista Doblemente Ligada
-//        {
-//            letra = hilera.charAt(i);
-////            insertar(letra, p);
-//            p = p.retornaLd();
-//        }
-//    }
-//    
-//    public int longitud() //Retorna la longitud de la hilera
-//    {
-//        NodoDoble p;
-//        p = primerNodo();
-//        int i = 0;
-//        while(!finDeRecorrido(p))
-//        {
-//           i=i+1;
-//           p = p.retornaLd();
-//        }
-//        return i;
-//    }
-//    
-//    public boolean anagrama(Polinomio s)
-//    {
-//        int i;
-//        NodoDoble k;
-//        Polinomio aux;
-////        Hilera car;
-//        if(longitud()!= s.longitud())
-//        {
-//            return false;
-//        }
-//        aux = copiaHilera();
-//        i = 1;
-//        car = subHilera(i,1);
-//        k = aux.posicion(car);
-//        while(i<=longitud() && k!=null)
-//        {
-//            aux.borrar(k);
-//            i = i+1;
-//            if(i>longitud())
-//            {
-//                break;
-//            }
-//            car = subHilera(i,1);
-//            k = aux.posicion(car); 
-//        }
-//        return i>longitud();//Retorna verdadero si i es mayor que la longitud de la hilera que llama el método, de lo contrario retorna falso
-//    }
+  
+    public int longitud() //Retorna la longitud de la hilera
+    {
+        NodoDoble p;
+        p = primerNodo();
+        int i = 0;
+        while(!finDeRecorrido(p))
+        {
+           i=i+1;
+           p = p.retornaLd();
+        }
+        return i;
+    }
+    
 //    
 //    public Polinomio subHilera(int i, int j)//Devuelve una hilera desde la posición i de la hilera original y toma j caracteres
 //    {
@@ -416,46 +346,110 @@ public class Polinomio extends ListaDoblementeLigada
 //        return s;
 //    }
 //    
-//    public Polinomio ordernarAlfabeticamente() //Devulve la hilera original ordenada alfábeticamente
-//    {
-//        Polinomio s;
-//        NodoDoble p,y;
-//        p = primerNodo();
-//        s = new Polinomio();
-//        s.insertar(p.retornaDato(), null);
-//        p = p.retornaLd();
-//        while(longitud() != s.longitud()) //Ciclo en donde se insertan los datos en orden alfabetico en una nueva hilera
-//        {
-//            y = s.buscaDondeInsertar(p.retornaDato());
-//            s.insertar(p.retornaDato(), y);
-//            p = p.retornaLd();
-//        }
-//        return s; //Retorna la nueva hilera en orden alfabetico
-//    }
+    public Polinomio ordernar() //Devulve la hilera original ordenada alfábeticamente
+    {
+        Polinomio s;
+        NodoDoble p,y;
+        p = primerNodo();
+        s = new Polinomio();        
+        s.insertar(p.retornaDigito(), p.retornaPotencia(), null);
+        p = p.retornaLd();
+        while(longitud()+1 != s.longitud())
+        {
+            y = s.buscaDondeInsertar(p.retornaPotencia());
+            s.insertar(p.retornaDigito(),p.retornaPotencia(), y);
+            p = p.retornaLd();
+        }
+        return s; //Retorna la nueva hilera en orden alfabetico
+    }
+    
+    public Polinomio minimizar()
+    {
+        Polinomio s;
+        NodoDoble m,n,o;
+        double d;
+        int p;
+        n = primerNodo();
+        s = new Polinomio();
+        m = primerNodo();
+        p = (Integer)m.retornaPotencia()+1;
+        o = s.primerNodo();
+        while(m!=null)
+        {
+            while((Integer)m.retornaPotencia()!=p)
+            {
+                m = m.retornaLd();
+                if(m==null)
+                {
+                    p = p-1;
+                    m = primerNodo();
+                }
+                if(p<0)
+                {
+                    break;
+                }
+            }
+            if(p<0)
+            {
+                break;
+            }
+            d = (Double)m.retornaDigito();
+            n = m.retornaLd();            
+            while(n!=null)
+            {
+                if((Integer)n.retornaPotencia()==p)
+                {
+                    d = d+(Double)n.retornaDigito();
+                }
+                n = n.retornaLd();
+            }
+            o = s.buscaDondeInsertar(p);                      
+            s.insertar(d, p, o);
+            d = 0;
+            m = m.retornaLd();
+            p = p -1;
+        }
+        s.recorreIzqDer();
+        System.out.println("");
+        return s; 
+    }
           
     //ninguno de los siguiente metodos son definitivos solo son un primer acercamiento
     
-    public void suma(ListaDoblementeLigada list1, ListaDoblementeLigada list2){
-       
-        ListaDoblementeLigada result = new ListaDoblementeLigada();
-        
-        if(!list1.esVacia() && !list2.esVacia()){
-            NodoDoble uno = list1.primerNodo();
-            NodoDoble dos = list2.primerNodo();
-            
-            while(!list1.finDeRecorrido(uno)){
-               result.insertarN(uno);
-               uno=uno.retornaLd();
+    public Polinomio suma(Polinomio polinomio)
+    {
+       Polinomio resultado;
+       NodoDoble p,q, o;
+       Double d;
+       int longitudP,longitudQ;
+       resultado = new  Polinomio();
+       longitudP = longitud();
+       longitudQ = polinomio.longitud();
+       o = resultado.primerNodo();
+       if(longitudP>longitudQ)
+       {
+           p = primerNodo();
+           q = polinomio.primerNodo();
+       }
+       else
+       {
+           p = polinomio.primerNodo();
+           q = primerNodo();
+       }
+        while (p!=null)
+        {
+            d = (Double)p.retornaDigito();
+            if(p.retornaPotencia()==q.retornaPotencia())
+            {
+                d = d+(Double)q.retornaDigito();
+                q = q.retornaLd();
             }
-            
-            
-            while (!list2.finDeRecorrido(dos)) {
-               result.insertarN(dos);
-               dos=dos.retornaLd();
-            }
-            simplificar(result);
+            System.out.println("hola");
+            o = resultado.buscaDondeInsertar(p.retornaPotencia());                      
+            resultado.insertar(d, p.retornaPotencia(), o);
+            p = p.retornaLd();           
         }
-        
+        return resultado;        
     }
     
     

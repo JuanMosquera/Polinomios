@@ -71,7 +71,7 @@ public class ListaDoblementeLigada{
         NodoDoble p, y;
         p = primerNodo();
         y = p.retornaLi();
-        while(!finDeRecorrido(p) && (char)p.retornaDigito()<(char)d)
+        while(!finDeRecorrido(p) && (int)p.retornaPotencia()>(int)d)
         {
             y = p;
             p = p.retornaLd();

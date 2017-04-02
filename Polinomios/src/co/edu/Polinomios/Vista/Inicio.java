@@ -1,6 +1,7 @@
 package co.edu.Polinomios.Vista;
 
 import co.edu.Polinomios.Controlador.Controlador;
+import javax.swing.JOptionPane;
 
 public class Inicio extends javax.swing.JFrame {
 
@@ -207,7 +208,7 @@ public class Inicio extends javax.swing.JFrame {
 
         panelOperacionesPolinomio.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operaciones con un solo polinomio", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
-        listaOperacionesPolinomio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Borrar polinomio", "Evaluar Polinomio", "Primera Derivada", "n-ésima Derivada", "Integral indefinida", "Integral definida" }));
+        listaOperacionesPolinomio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Seleccionar Opción-", "1. Borrar polinomio", "2. Evaluar Polinomio", "3. Primera Derivada", "4. n-ésima Derivada", "5. Integral indefinida", "6. Integral definida" }));
 
         listaPolinomio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Polinomio 1", "Polinomio 2" }));
 
@@ -216,6 +217,11 @@ public class Inicio extends javax.swing.JFrame {
         labelPolinomioSeleccionado.setText("Polinomio: ");
 
         botonAceptarOperacionPolinomio.setText("Aceptar");
+        botonAceptarOperacionPolinomio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAceptarOperacionPolinomioActionPerformed(evt);
+            }
+        });
 
         labelVariable.setText("Variable:");
 
@@ -268,6 +274,11 @@ public class Inicio extends javax.swing.JFrame {
         listaOperacionesEntrePolinomios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sumar polinomios", "Multiplicar polinomios", "Determinar factor del polinomio" }));
 
         botonAceptarOperacionEntrePolinomios.setText("Aceptar");
+        botonAceptarOperacionEntrePolinomios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAceptarOperacionEntrePolinomiosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelOperacionesEntrePolinomiosLayout = new javax.swing.GroupLayout(panelOperacionesEntrePolinomios);
         panelOperacionesEntrePolinomios.setLayout(panelOperacionesEntrePolinomiosLayout);
@@ -371,18 +382,20 @@ public class Inicio extends javax.swing.JFrame {
 
     private void botonPolinomio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPolinomio1ActionPerformed
         // TODO add your handling code here:
-        labelPolinomio1.setText(campoPolinomio1.getText());
-        controlador.crearPolinomio(campoPolinomio1.getText());
+//        labelPolinomio1.setText(campoPolinomio1.getText());
+        controlador.crearPolinomio1(campoPolinomio1.getText());
         campoPolinomio1.setEnabled(false);
         botonPolinomio1.setEnabled(false);
         campoPolinomio2.setEnabled(true);
         botonIngreso2.setEnabled(true);
+        labelPolinomio1.setText(controlador.imprimePolinomio(0));
         campoPolinomio1.setText("");        
     }//GEN-LAST:event_botonPolinomio1ActionPerformed
 
     private void botonIngreso2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngreso2ActionPerformed
         // TODO add your handling code here:
-        labelPolinomio2.setText(campoPolinomio2.getText());
+//        labelPolinomio2.setText(campoPolinomio2.getText());
+        controlador.crearPolinomio2(campoPolinomio2.getText());
         campoPolinomio2.setEnabled(false);
         botonIngreso2.setEnabled(false);
         listaOperacionesEntrePolinomios.setEnabled(true);
@@ -391,8 +404,76 @@ public class Inicio extends javax.swing.JFrame {
         botonAceptarOperacionEntrePolinomios.setEnabled(true);
         botonAceptarOperacionPolinomio.setEnabled(true);
         listaPolinomio.setEnabled(true);
+        labelPolinomio2.setText(controlador.imprimePolinomio(1));
         campoPolinomio2.setText("");
     }//GEN-LAST:event_botonIngreso2ActionPerformed
+
+    private void botonAceptarOperacionPolinomioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarOperacionPolinomioActionPerformed
+        int opcion = listaOperacionesPolinomio.getSelectedIndex();
+        switch (opcion) 
+        {
+            case 0:   
+                JOptionPane.showMessageDialog(null, "Debe elegir una de las opciones de la lista.");
+                break;
+            case 1:                 
+                if(listaPolinomio.getSelectedIndex()==0)
+                {
+                    labelPolinomio1.setText("");
+                    campoPolinomio1.setEnabled(true);
+                    botonPolinomio1.setEnabled(true);
+                    listaOperacionesEntrePolinomios.setEnabled(false);
+                    botonAceptarOperacionEntrePolinomios.setEnabled(false);
+                }
+                else
+                {
+                    labelPolinomio2.setText("");
+                    campoPolinomio2.setEnabled(true);
+                    botonIngreso2.setEnabled(true);
+                    listaOperacionesEntrePolinomios.setEnabled(false);
+                    botonAceptarOperacionEntrePolinomios.setEnabled(false);
+                }
+                break;
+            case 2:
+//                controlador.evaluarPolinomio(listaOperacionesPolinomio.getSelectedIndex());
+                
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            default:
+                break;
+        }
+    }//GEN-LAST:event_botonAceptarOperacionPolinomioActionPerformed
+
+    private void botonAceptarOperacionEntrePolinomiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarOperacionEntrePolinomiosActionPerformed
+        int opcion = listaOperacionesEntrePolinomios.getSelectedIndex();
+        switch (opcion) 
+        {
+            case 0:
+                controlador.sumar();
+                labelResultado.setText(controlador.imprimePolinomio(3));
+                break;
+            case 2:
+//                controlador.evaluarPolinomio(listaOperacionesPolinomio.getSelectedIndex());
+                
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            default:
+                break;
+        }
+    }//GEN-LAST:event_botonAceptarOperacionEntrePolinomiosActionPerformed
 
     /**
      * @param args the command line arguments
