@@ -173,5 +173,15 @@ public class Controlador
     
     }
     
+    public float integralD(int a, int b, int c){
+         float result=0;
+        if (c==0) {
+            result=polinomio1.integralDef(a, b);
+        } else if(c==1){
+            result=polinomio2.integralDef(a, b);
+        }
+        return result;
+    }
+    
     
 }

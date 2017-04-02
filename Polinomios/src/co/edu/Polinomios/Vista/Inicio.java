@@ -516,6 +516,25 @@ public class Inicio extends javax.swing.JFrame {
                 
                 break;
             case 6:
+                    
+                String s2=campoVariable.getText();
+                if (s2==null || "".equals(s2) || " ".equals(s2)) {
+                                    JOptionPane.showMessageDialog(null, "Debe ingresar un valor para evaluar");
+
+                }else{
+                    s2 = s2.replace(" ", "");
+                    String[] limit = s2.split("-");
+                    int a = Integer.parseInt(limit[0]);
+                    int b = Integer.parseInt(limit[1]);
+                
+                    if (listaPolinomio.getSelectedIndex()==0) {
+                        labelResultado.setText(Float.toString(controlador.integralD(a,b,0)));
+                    } else {
+                        labelResultado.setText(Float.toString(controlador.integralD(a,b,1)));
+                    }
+
+                }
+                
                 break;
             default:
                 break;

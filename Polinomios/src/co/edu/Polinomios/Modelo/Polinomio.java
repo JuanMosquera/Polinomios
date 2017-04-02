@@ -700,4 +700,14 @@ public class Polinomio extends ListaDoblementeLigada
         //ingresar un condicional para cuando la derivada llege cero
     }
     
+      public float integralDef(float x, float y){
+        
+        this.integral();
+        float a = (float) this.evaluar(x);
+        float b = (float) this.evaluar(y);
+        float r = a-b;
+        return r;
+        
+    }
+    
 }
