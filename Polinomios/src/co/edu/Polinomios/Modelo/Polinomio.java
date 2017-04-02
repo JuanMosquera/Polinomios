@@ -610,16 +610,24 @@ public class Polinomio extends ListaDoblementeLigada
     
     public void integral(ListaDoblementeLigada list){
          NodoDoble uno=list.primerNodo();
+        double x;
+        int y;
+        
+        System.out.println("integral2");
+        list.recorreIzqDer();
         
         while(!finDeRecorrido(uno)){
-            
-            uno.asignaDigito(((int)uno.retornaDigito()/(int)uno.retornaPotencia()));
-            uno.asignaPotencia(((int)uno.retornaPotencia()+1));
+            x=((double)uno.retornaDigito()/(int)uno.retornaPotencia());
+            y=((int)uno.retornaPotencia()+1);
+            uno.asignaDigito(x);
+            uno.asignaPotencia(y);
             //recordatorio en caso de que la potencia sea negativa?
             //recordatorio en caso de que la potencia sea cero
             
             uno=uno.retornaLd();
         }
+        System.out.println("integral");
+        list.recorreIzqDer();
     }
     
     public double evaluar(float x){
@@ -631,16 +639,52 @@ public class Polinomio extends ListaDoblementeLigada
        
     
         while(!finDeRecorrido(nod)){
-             a=(double)nod.retornaDigito()*x;
+             
             b=(int)nod.retornaPotencia();
-            result= result + Math.pow(a,b);
+            a= Math.pow(x,b);
+            result=result+(double)nod.retornaDigito()*a;
+            
             nod=nod.retornaLd();
         }
-        System.out.println(a);
-        System.out.println(b);
+        System.out.println("elevado"+a);
+        System.out.println("potencia"+b);
         System.out.println(result);
         return result;
         
+    }
+    
+    public void borrarP( ){
+         NodoDoble p;
+        p = primerNodo();
+        while(p!=this.ultimoNodo())
+        {
+            if(!esVacia())
+            {
+
+                    this.borrar(p);
+                    p = p.retornaLd();
+                System.out.println("borrar");
+            }
+            else
+            {
+                System.out.println("La lista está vacía");
+            }
+        }
+    }
+    
+    
+    public String esFactor(Polinomio list, Polinomio list2){
+       
+        float c = (float) (double) list2.ultimoNodo().retornaLi().retornaDigito();
+        System.out.println("el digito");
+        System.out.println(c);
+        double x;
+        x = list.evaluar(c);
+        if (x==0) {
+            return "Es factor";
+        } else {
+            return "No es factor";
+        }
     }
     
     
