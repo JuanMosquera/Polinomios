@@ -7,6 +7,14 @@ public class Inicio extends javax.swing.JFrame {
     Controlador controlador;
     public Inicio() {
         initComponents();
+        listaOperacionesEntrePolinomios.setEnabled(false);
+        listaOperacionesPolinomio.setEnabled(false);
+        campoVariable.setEnabled(false);
+        botonAceptarOperacionEntrePolinomios.setEnabled(false);
+        botonAceptarOperacionPolinomio.setEnabled(false);
+        campoPolinomio2.setEnabled(false);
+        botonIngreso2.setEnabled(false);
+        listaPolinomio.setEnabled(false);
         controlador = new Controlador();
     }
 
@@ -33,6 +41,20 @@ public class Inicio extends javax.swing.JFrame {
         labelPolinomio1 = new javax.swing.JLabel();
         panelPolinomio2 = new javax.swing.JPanel();
         labelPolinomio2 = new javax.swing.JLabel();
+        panelOperacionesPolinomio = new javax.swing.JPanel();
+        listaOperacionesPolinomio = new javax.swing.JComboBox<>();
+        listaPolinomio = new javax.swing.JComboBox<>();
+        labelOperacionesPolinomio = new javax.swing.JLabel();
+        labelPolinomioSeleccionado = new javax.swing.JLabel();
+        botonAceptarOperacionPolinomio = new javax.swing.JButton();
+        labelVariable = new javax.swing.JLabel();
+        campoVariable = new javax.swing.JTextField();
+        panelOperacionesEntrePolinomios = new javax.swing.JPanel();
+        labelOperacionesEntrePolinomios = new javax.swing.JLabel();
+        listaOperacionesEntrePolinomios = new javax.swing.JComboBox<>();
+        botonAceptarOperacionEntrePolinomios = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        labelResultado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -73,7 +95,7 @@ public class Inicio extends javax.swing.JFrame {
                     .addComponent(labelPolinomioIngreso2)
                     .addComponent(campoPolinomio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(botonIngreso2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonIngreso2, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -124,16 +146,15 @@ public class Inicio extends javax.swing.JFrame {
         panelTituloLayout.setHorizontalGroup(
             panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTituloLayout.createSequentialGroup()
-                .addGap(158, 158, 158)
+                .addGap(160, 160, 160)
                 .addComponent(labelTitulo)
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelTituloLayout.setVerticalGroup(
             panelTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTituloLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(labelTitulo)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelTitulo))
         );
 
         panelPolinomio1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Polinomio 1", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
@@ -184,6 +205,121 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        panelOperacionesPolinomio.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operaciones con un solo polinomio", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        listaOperacionesPolinomio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Borrar polinomio", "Evaluar Polinomio", "Primera Derivada", "n-ésima Derivada", "Integral indefinida", "Integral definida" }));
+
+        listaPolinomio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Polinomio 1", "Polinomio 2" }));
+
+        labelOperacionesPolinomio.setText("Operaciones: ");
+
+        labelPolinomioSeleccionado.setText("Polinomio: ");
+
+        botonAceptarOperacionPolinomio.setText("Aceptar");
+
+        labelVariable.setText("Variable:");
+
+        javax.swing.GroupLayout panelOperacionesPolinomioLayout = new javax.swing.GroupLayout(panelOperacionesPolinomio);
+        panelOperacionesPolinomio.setLayout(panelOperacionesPolinomioLayout);
+        panelOperacionesPolinomioLayout.setHorizontalGroup(
+            panelOperacionesPolinomioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelOperacionesPolinomioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelOperacionesPolinomioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelOperacionesPolinomioLayout.createSequentialGroup()
+                        .addComponent(labelOperacionesPolinomio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(listaOperacionesPolinomio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelOperacionesPolinomioLayout.createSequentialGroup()
+                        .addComponent(labelPolinomioSeleccionado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(listaPolinomio, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(labelVariable)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(campoVariable, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelOperacionesPolinomioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonAceptarOperacionPolinomio, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(202, 202, 202))
+        );
+        panelOperacionesPolinomioLayout.setVerticalGroup(
+            panelOperacionesPolinomioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelOperacionesPolinomioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelOperacionesPolinomioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelOperacionesPolinomio)
+                    .addComponent(listaOperacionesPolinomio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelOperacionesPolinomioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelPolinomioSeleccionado)
+                    .addComponent(listaPolinomio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelVariable)
+                    .addComponent(campoVariable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonAceptarOperacionPolinomio, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
+        );
+
+        panelOperacionesEntrePolinomios.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operaciones entre polinomios", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        labelOperacionesEntrePolinomios.setText("Operaciones:");
+
+        listaOperacionesEntrePolinomios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sumar polinomios", "Multiplicar polinomios", "Determinar factor del polinomio" }));
+
+        botonAceptarOperacionEntrePolinomios.setText("Aceptar");
+
+        javax.swing.GroupLayout panelOperacionesEntrePolinomiosLayout = new javax.swing.GroupLayout(panelOperacionesEntrePolinomios);
+        panelOperacionesEntrePolinomios.setLayout(panelOperacionesEntrePolinomiosLayout);
+        panelOperacionesEntrePolinomiosLayout.setHorizontalGroup(
+            panelOperacionesEntrePolinomiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelOperacionesEntrePolinomiosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelOperacionesEntrePolinomios)
+                .addGap(18, 18, 18)
+                .addComponent(listaOperacionesEntrePolinomios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(panelOperacionesEntrePolinomiosLayout.createSequentialGroup()
+                .addGap(192, 192, 192)
+                .addComponent(botonAceptarOperacionEntrePolinomios, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(188, Short.MAX_VALUE))
+        );
+        panelOperacionesEntrePolinomiosLayout.setVerticalGroup(
+            panelOperacionesEntrePolinomiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelOperacionesEntrePolinomiosLayout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(panelOperacionesEntrePolinomiosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelOperacionesEntrePolinomios)
+                    .addComponent(listaOperacionesEntrePolinomios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(botonAceptarOperacionEntrePolinomios, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operaciones con un solo polinomio", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        labelResultado.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
+        labelResultado.setForeground(new java.awt.Color(86, 191, 115));
+        labelResultado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelResultado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelResultado)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelResultado)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -192,30 +328,40 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(panelPolinomio2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelPolinomio2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(panelIngresoPolinomio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(panelIngresoPolinomio2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(panelPolinomio1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(panelPolinomio1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(panelOperacionesPolinomio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(panelOperacionesEntrePolinomios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(panelTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelIngresoPolinomio1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(panelIngresoPolinomio2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelIngresoPolinomio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelIngresoPolinomio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelPolinomio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelPolinomio2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(351, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelOperacionesPolinomio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelOperacionesEntrePolinomios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         panelPolinomio2.getAccessibleContext().setAccessibleDescription("");
@@ -227,12 +373,24 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         labelPolinomio1.setText(campoPolinomio1.getText());
         controlador.crearPolinomio(campoPolinomio1.getText());
+        campoPolinomio1.setEnabled(false);
+        botonPolinomio1.setEnabled(false);
+        campoPolinomio2.setEnabled(true);
+        botonIngreso2.setEnabled(true);
         campoPolinomio1.setText("");        
     }//GEN-LAST:event_botonPolinomio1ActionPerformed
 
     private void botonIngreso2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngreso2ActionPerformed
         // TODO add your handling code here:
         labelPolinomio2.setText(campoPolinomio2.getText());
+        campoPolinomio2.setEnabled(false);
+        botonIngreso2.setEnabled(false);
+        listaOperacionesEntrePolinomios.setEnabled(true);
+        listaOperacionesPolinomio.setEnabled(true);
+        campoVariable.setEnabled(true);
+        botonAceptarOperacionEntrePolinomios.setEnabled(true);
+        botonAceptarOperacionPolinomio.setEnabled(true);
+        listaPolinomio.setEnabled(true);
         campoPolinomio2.setText("");
     }//GEN-LAST:event_botonIngreso2ActionPerformed
 
@@ -273,17 +431,31 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonAceptarOperacionEntrePolinomios;
+    private javax.swing.JButton botonAceptarOperacionPolinomio;
     private javax.swing.JButton botonIngreso2;
     private javax.swing.JButton botonPolinomio1;
     private javax.swing.JTextField campoPolinomio1;
     private javax.swing.JTextField campoPolinomio2;
+    private javax.swing.JTextField campoVariable;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel labelOperacionesEntrePolinomios;
+    private javax.swing.JLabel labelOperacionesPolinomio;
     private javax.swing.JLabel labelPolinomio1;
     private javax.swing.JLabel labelPolinomio2;
     private javax.swing.JLabel labelPolinomioIngreso1;
     private javax.swing.JLabel labelPolinomioIngreso2;
+    private javax.swing.JLabel labelPolinomioSeleccionado;
+    private javax.swing.JLabel labelResultado;
     private javax.swing.JLabel labelTitulo;
+    private javax.swing.JLabel labelVariable;
+    private javax.swing.JComboBox<String> listaOperacionesEntrePolinomios;
+    private javax.swing.JComboBox<String> listaOperacionesPolinomio;
+    private javax.swing.JComboBox<String> listaPolinomio;
     private javax.swing.JPanel panelIngresoPolinomio1;
     private javax.swing.JPanel panelIngresoPolinomio2;
+    private javax.swing.JPanel panelOperacionesEntrePolinomios;
+    private javax.swing.JPanel panelOperacionesPolinomio;
     private javax.swing.JPanel panelPolinomio1;
     private javax.swing.JPanel panelPolinomio2;
     private javax.swing.JPanel panelTitulo;

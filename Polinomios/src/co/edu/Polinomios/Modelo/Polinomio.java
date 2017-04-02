@@ -15,52 +15,59 @@ public class Polinomio extends ListaDoblementeLigada
     
     public Polinomio(String polinomio)
     {
+        String[] letras;
         double d;
         int p;
         char s;
         polinomio = polinomio.toLowerCase();
         polinomio = polinomio.replace(" ", "");
         System.out.println(polinomio);
-//        System.out.println(polinomio.split("-"));
-        String[] fracciones = polinomio.split("\\+");
+        polinomio = polinomio.replace("+", " +");
+        polinomio = polinomio.replace("-", " -");
+        System.out.println(polinomio);   
+        String[] fracciones = polinomio.split(" ");
         for(int i=0;i<fracciones.length;i++)
         {
             System.out.println(fracciones[i]);
         }
-        String[] digito = fracciones[0].split("x");
-        for(int i=0;i<digito.length;i++)
+        System.out.println("prueba");
+        int c=(fracciones.length)*2;
+        letras= new String[c];
+        int j =0;
+        if (fracciones[0].equals(""))
         {
-            System.out.println(digito[i]);
+            for(int i=1;i<fracciones.length;i++)
+            {
+                String[] digito = fracciones[i].split("x");
+//                System.out.println(fracciones[i]);
+                System.out.println(digito[0]);
+                letras[j]=digito[0];
+                j++;
+                if(digito.length==2)
+                {
+                    System.out.println(digito[1]);
+                    letras[j]=digito[1];
+                    j++;
+                }
+            }
         }
-//        d = Double.parseDouble(digito[0]);
-//        if(d<0)
-//        {
-//            s = '-';
-//        }
-//        else
-//        {
-//            s = '+';
-//        }
-//        p = Integer.parseInt(digito[1]);
-//        insertar(s, d, p, null);
-//        NodoDoble n = primerNodo();
-//        for(int i = 1; i<fracciones.length; i++)
-//        {
-//            digito = fracciones[i].split("x");
-//            d = Double.parseDouble(digito[0]);
-//            if(d<0)
-//            {
-//                s = '-';
-//            }
-//            else
-//            {
-//                s = '+';
-//            }
-//            p = Integer.parseInt(digito[1]);
-//            insertar(s, d, p, n);
-//            n = n.retornaLd();
-//        }
-//        recorreIzqDer();
+        else 
+        {
+            for(int i=0;i<fracciones.length;i++)
+            {
+                String[] digito = fracciones[i].split("x");
+//                System.out.println(fracciones[i]);
+                System.out.println(digito[0]);
+                letras[j]=digito[0];
+                j++;
+                if(digito.length==2)
+                {
+                    System.out.println(digito[1]);
+                    letras[j]=digito[1];
+                    j++;
+                }
+            }
+        }
     }
     
 //    public void construirHilera(String hilera)
