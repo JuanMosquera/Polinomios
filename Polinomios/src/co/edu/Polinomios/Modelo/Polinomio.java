@@ -618,15 +618,16 @@ public class Polinomio extends ListaDoblementeLigada
     
     public double evaluar(float x){
         NodoDoble nod;
-        double a,b,result = 0;
+        double a = 0, b = 0,result = 0;
         
         nod=this.primerNodo();
         
-        a=(double)nod.retornaDigito()*x;
-        b=(int)nod.retornaPotencia();
-        
+       
+    
         while(!finDeRecorrido(nod)){
-            result=  Math.pow(a,b);
+             a=(double)nod.retornaDigito()*x;
+            b=(int)nod.retornaPotencia();
+            result= result + Math.pow(a,b);
             nod=nod.retornaLd();
         }
         System.out.println(a);
