@@ -626,7 +626,7 @@ public class Polinomio extends ListaDoblementeLigada
         b=(int)nod.retornaPotencia();
         
         while(!finDeRecorrido(nod)){
-            result=  Math.pow(b,a);
+            result=  Math.pow(a,b);
             nod=nod.retornaLd();
         }
         System.out.println(a);
