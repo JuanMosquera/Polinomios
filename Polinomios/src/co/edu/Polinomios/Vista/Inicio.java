@@ -307,7 +307,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Operaciones con un solo polinomio", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Resulltado", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         labelResultado.setFont(new java.awt.Font("DejaVu Sans Condensed", 1, 18)); // NOI18N
         labelResultado.setForeground(new java.awt.Color(86, 191, 115));
@@ -458,9 +458,9 @@ public class Inicio extends javax.swing.JFrame {
                 controlador.sumar();
                 labelResultado.setText(controlador.imprimePolinomio(3));
                 break;
-            case 2:
-//                controlador.evaluarPolinomio(listaOperacionesPolinomio.getSelectedIndex());
-                
+            case 1:
+                controlador.multiplicar();
+                labelResultado.setText(controlador.imprimePolinomio(3));                
                 break;
             case 3:
                 break;

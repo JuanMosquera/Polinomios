@@ -106,4 +106,10 @@ public class Controlador
         resultado = polinomio1.suma(polinomio2);
         resultado.recorreIzqDer();
     }
+    
+    public void multiplicar()
+    {
+        resultado = polinomio1.multiplicar(polinomio2);
+        resultado.recorreIzqDer();
+    }
 }

@@ -452,6 +452,33 @@ public class Polinomio extends ListaDoblementeLigada
         return resultado;        
     }
     
+    public Polinomio multiplicar(Polinomio polinomio)
+    {
+       Polinomio resultado;
+       NodoDoble p,q, o;
+       Double d;
+       int pot;
+       resultado = new  Polinomio();
+       o = resultado.primerNodo();
+       p = primerNodo();
+       q = polinomio.primerNodo();
+       while (p!=null)
+       {
+            d = (Double)p.retornaDigito();
+            while (q!=null)
+            {
+                d = d*(Double)q.retornaDigito();
+                pot = (Integer)p.retornaPotencia()+(Integer)q.retornaPotencia();
+                o = resultado.buscaDondeInsertar(pot);
+                System.out.println(d);
+                resultado.insertar(d, pot, o);
+                q = q.retornaLd();
+            }
+            p = p.retornaLd();   
+            q = polinomio.primerNodo();
+        }
+        return resultado;        
+    }
     
 //    public void sumarNodo(NodoDoble uno, NodoDoble dos, ListaDoblementeLigada result){
 //        
