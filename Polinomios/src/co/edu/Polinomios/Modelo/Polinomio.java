@@ -27,10 +27,38 @@ public class Polinomio extends ListaDoblementeLigada
             d = Double.parseDouble(letras[0]);
         }
         p = Integer.parseInt(letras[1]);
-        for(int i=0;i<letras.length;i++)
+        insertar(d, p, null);
+        NodoDoble nodo = primerNodo();
+        System.out.println(nodo.retornaDigito());
+        System.out.println(nodo.retornaPotencia());
+        for(int i=2;i<letras.length;i++)
         {
+            if(letras[i].equals("+"))
+            {
+                d = 1;
+            }
+            else if(letras[i].equals("-"))
+            {
+                d = -1;
+            }
+            else
+            {
+                d = Double.parseDouble(letras[i]);
+                i = i+1;
+                if(i==letras.length)
+                {
+                    break;
+                }
+                else
+                {
+                    p = Integer.parseInt(letras[i]);
+                }
+            }
+            insertar(d, p, nodo);
+            nodo = nodo.retornaLd();
             System.out.println("I: "+i+"Dato: "+letras[i]);
         }
+        recorreIzqDer();
     }
     
     public String[] separarPolinomio(String polinomio)
@@ -431,58 +459,58 @@ public class Polinomio extends ListaDoblementeLigada
     }
     
     
-    public void sumarNodo(NodoDoble uno, NodoDoble dos, ListaDoblementeLigada result){
-        
-        int a,b,r;
-        String x,y;
-        NodoDoble nuevo;
-        
-        
-            a=(int) uno.retornaDigito();
-            b=(int) dos.retornaDigito();
-            x=(String) uno.retornaSigno();
-            y=(String) dos.retornaSigno();
-            
-            if(x.equals(b) && x.equals("-")){
-                r=a+b;
-                nuevo =new NodoDoble("-",r,uno.retornaPotencia());
-                result.insertarN(nuevo);
-                
-            }else if(x.equals(b) && x.equals("+")){
-                r=a+b;
-                nuevo =new NodoDoble("+",r,uno.retornaPotencia());
-                result.insertarN(nuevo);
-                
-            }else if(x.equals("+")){
-               
-                if(a<b){
-                    r=b-a;
-                    nuevo =new NodoDoble("-",r,uno.retornaPotencia());
-                    result.insertarN(nuevo);
-                    
-                }else{
-                    r=a-b;
-                    nuevo =new NodoDoble("+",r,uno.retornaPotencia());
-                    result.insertarN(nuevo);
-                } 
-            }else{
-         
-                 if(a<b){
-                    r=b-a;
-                    nuevo =new NodoDoble("+",r,uno.retornaPotencia());
-                    result.insertarN(nuevo);
-                }else{
-                    r=a-b;
-                    nuevo =new NodoDoble("-",r,uno.retornaPotencia());
-                    result.insertarN(nuevo);
-                }
-            }
-            result.borrar(uno);
-            result.borrar(dos);
-            uno=nuevo;
-            dos=nuevo.retornaLd();
-        
-    }
+//    public void sumarNodo(NodoDoble uno, NodoDoble dos, ListaDoblementeLigada result){
+//        
+//        int a,b,r;
+//        String x,y;
+//        NodoDoble nuevo;
+//        
+//        
+//            a=(int) uno.retornaDigito();
+//            b=(int) dos.retornaDigito();
+//            x=(String) uno.retornaSigno();
+//            y=(String) dos.retornaSigno();
+//            
+//            if(x.equals(b) && x.equals("-")){
+//                r=a+b;
+//                nuevo =new NodoDoble("-",r,uno.retornaPotencia());
+//                result.insertarN(nuevo);
+//                
+//            }else if(x.equals(b) && x.equals("+")){
+//                r=a+b;
+//                nuevo =new NodoDoble("+",r,uno.retornaPotencia());
+//                result.insertarN(nuevo);
+//                
+//            }else if(x.equals("+")){
+//               
+//                if(a<b){
+//                    r=b-a;
+//                    nuevo =new NodoDoble("-",r,uno.retornaPotencia());
+//                    result.insertarN(nuevo);
+//                    
+//                }else{
+//                    r=a-b;
+//                    nuevo =new NodoDoble("+",r,uno.retornaPotencia());
+//                    result.insertarN(nuevo);
+//                } 
+//            }else{
+//         
+//                 if(a<b){
+//                    r=b-a;
+//                    nuevo =new NodoDoble("+",r,uno.retornaPotencia());
+//                    result.insertarN(nuevo);
+//                }else{
+//                    r=a-b;
+//                    nuevo =new NodoDoble("-",r,uno.retornaPotencia());
+//                    result.insertarN(nuevo);
+//                }
+//            }
+//            result.borrar(uno);
+//            result.borrar(dos);
+//            uno=nuevo;
+//            dos=nuevo.retornaLd();
+//        
+//    }
     
     public boolean igualExp(NodoDoble x, NodoDoble y){
     
@@ -505,7 +533,7 @@ public class Polinomio extends ListaDoblementeLigada
         while(!list.finDeRecorrido(dos)){
             
             if(igualExp(uno,dos)){
-                sumarNodo(uno,dos,list);
+//                sumarNodo(uno,dos,list);
             }else{
                 uno=uno.retornaLd();
                 dos=dos.retornaLd();
