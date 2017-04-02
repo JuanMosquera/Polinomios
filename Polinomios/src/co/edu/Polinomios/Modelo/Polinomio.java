@@ -7,10 +7,9 @@ public class Polinomio extends ListaDoblementeLigada
 {      
     public Polinomio()
     {
-        char s = 0;
         double d = 0;
         int p = 0;
-        insertar(s, d, p, null);
+        insertar(d, p, null);
     }
     
     public Polinomio(String polinomio)
@@ -18,8 +17,20 @@ public class Polinomio extends ListaDoblementeLigada
         String[] letras;
         double d;
         int p;
-        char s;
-        letras = separarPolinomio(polinomio);       
+        letras = separarPolinomio(polinomio);
+        if(letras[0]=="")
+        {
+            d = 1;
+        }
+        else
+        {
+            d = Double.parseDouble(letras[0]);
+        }
+        p = Integer.parseInt(letras[1]);
+        for(int i=0;i<letras.length;i++)
+        {
+            System.out.println("I: "+i+"Dato: "+letras[i]);
+        }
     }
     
     public String[] separarPolinomio(String polinomio)

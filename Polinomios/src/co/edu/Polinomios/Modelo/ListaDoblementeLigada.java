@@ -38,7 +38,6 @@ public class ListaDoblementeLigada{
         {
             while(!finDeRecorrido(p))
             {
-                System.out.print(p.retornaSigno());
                 System.out.print(p.retornaDigito());
                 if((int)p.retornaPotencia()!=0)
                 {
@@ -60,7 +59,6 @@ public class ListaDoblementeLigada{
         p = ultimoNodo();
         while(!finDeRecorrido(p))
         {
-            System.out.println(p.retornaSigno());
             System.out.println(p.retornaDigito());
             System.out.println("X");
             System.out.println(p.retornaPotencia());
@@ -103,10 +101,10 @@ public class ListaDoblementeLigada{
         conectar(x,y);
     }
     
-    public void insertar(Object s, Object d, Object p, NodoDoble y) //Inserta un nuevo nodo con objecto d
+    public void insertar(Object d, Object p, NodoDoble y) //Inserta un nuevo nodo con objecto d
     {
         NodoDoble x;
-        x = new NodoDoble(s, d, p);
+        x = new NodoDoble(d, p);
         conectar(x,y);
     }
     

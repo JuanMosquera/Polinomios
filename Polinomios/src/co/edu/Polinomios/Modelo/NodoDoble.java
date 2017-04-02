@@ -5,11 +5,10 @@ public class NodoDoble
     private NodoDoble Li, Ld;
     private Object digito, signo, potencia;
     
-    NodoDoble(Object s, Object d, Object p)
+    NodoDoble(Object d, Object p)
     {
         Li = null;
         Ld = null;
-        signo = s;
         digito = d;
         potencia = p;
     }
@@ -43,16 +42,6 @@ public class NodoDoble
     {
         digito = d;
     }
-    
-    public Object retornaSigno() 
-    {
-        return signo;
-    }
-
-    public void asignaSigno(Object s) 
-    {
-        signo = s;
-    } 
     
     public Object retornaPotencia() 
     {
