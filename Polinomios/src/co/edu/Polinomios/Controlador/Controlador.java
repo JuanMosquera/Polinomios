@@ -139,4 +139,39 @@ public class Controlador
         return n;
     }
     
+    public void integral(int x){
+        if (x==0) {
+            polinomio1.integral();
+        } else if(x==1){
+            polinomio2.integral();
+        }
+    }
+    
+    public void borrar(int x){
+        if (x==0) {
+            polinomio1.borrarP();
+        } else if(x==1){
+            polinomio2.borrarP();
+        }
+        
+    }
+    
+    public String factor(){
+        String respuesta=polinomio1.esFactor(polinomio1,polinomio2);
+        return respuesta;
+    }
+    
+    public void nderivada(int x, int n){
+        
+        if (x==0) {
+            polinomio1.nderivar(polinomio1,n);
+        } else if(x==1){
+            polinomio2.nderivar(polinomio2,n);
+        }
+        
+        
+    
+    }
+    
+    
 }

@@ -13,7 +13,7 @@ public class separarString {
     
     public static void main(String[] args) {
         
-        String polinomio=" x2 + 2x3 -3x2 -1 +2x +x +1";
+        String polinomio="2x2+x2+3x2-2 -3";
         
         String[] letras;
         int c;
@@ -123,6 +123,69 @@ public class separarString {
             }
            
         }
+        
+        
+         double d;
+        int p;
+         if(letras[0].equals(""))
+        {
+            d = 1;
+        }
+         else if(letras[0].equals("-") && letras[0].length()==1){
+             d = -1;
+         }
+        else
+        {
+            d = Double.parseDouble(letras[0]);
+        }
+        p = Integer.parseInt(letras[1]);
+        Polinomio poli = new Polinomio();
+        poli.insertar(d, p, null);
+        NodoDoble nodo = poli.primerNodo();
+        for(int i=2;i<letras.length;i++)
+        {
+            if(letras[i].equals("+"))
+            {
+                d = 1;
+            }
+            else if(letras[i].equals("-"))
+            {
+                d = -1;
+            }
+            else
+            {
+                d = Double.parseDouble(letras[i]);               
+            }
+            i = i+1;
+            if(i==letras.length || letras[i]==null)
+            {
+                break;
+            }                
+            else
+            {
+                p = Integer.parseInt(letras[i]);
+            }
+            poli.insertar(d, p, nodo);
+            nodo = nodo.retornaLd();
+        }
+        System.out.println("122");
+        poli.recorreIzqDer();
+        System.out.println("hola");
+        nodo= poli.primerNodo();
+        for (int i = 0; i < poli.longitud()-1; i++) {
+            
+            if (nodo.retornaPotencia()==nodo.retornaLd().retornaPotencia()) {
+                System.out.println("son iguales");
+                nodo.asignaDigito((double)nodo.retornaDigito()+ (double)nodo.retornaLd().retornaDigito());
+                poli.borrar(nodo.retornaLd());
+                i--;
+            }else {
+                nodo=nodo.retornaLd();
+            }
+        }
+        
+         poli.recorreIzqDer();
+
         
    }
         

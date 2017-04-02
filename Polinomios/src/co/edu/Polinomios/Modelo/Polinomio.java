@@ -608,26 +608,30 @@ public class Polinomio extends ListaDoblementeLigada
         
     }
     
-    public void integral(ListaDoblementeLigada list){
-         NodoDoble uno=list.primerNodo();
+    public void integral(){
+         NodoDoble uno=primerNodo();
         double x;
         int y;
         
         System.out.println("integral2");
-        list.recorreIzqDer();
+        this.recorreIzqDer();
         
-        while(!finDeRecorrido(uno)){
-            x=((double)uno.retornaDigito()/(int)uno.retornaPotencia());
-            y=((int)uno.retornaPotencia()+1);
-            uno.asignaDigito(x);
+        while(uno!=this.ultimoNodo()){
+            
+            y=((int)uno.retornaPotencia()+1); 
             uno.asignaPotencia(y);
+            x=((double)uno.retornaDigito()/(int)uno.retornaPotencia());
+            
+           
+            uno.asignaDigito(x);
+          
             //recordatorio en caso de que la potencia sea negativa?
             //recordatorio en caso de que la potencia sea cero
             
             uno=uno.retornaLd();
         }
         System.out.println("integral");
-        list.recorreIzqDer();
+        this.recorreIzqDer();
     }
     
     public double evaluar(float x){
@@ -687,6 +691,13 @@ public class Polinomio extends ListaDoblementeLigada
         }
     }
     
-    
+    public void nderivar(Polinomio list, int n){
+        
+        for (int i = 0; i < n; i++) {
+            this.derivada(list);
+        }
+        
+        //ingresar un condicional para cuando la derivada llege cero
+    }
     
 }
