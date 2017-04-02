@@ -38,13 +38,13 @@ public class Suma {
     
     public void sumarNodo(NodoDoble uno, NodoDoble dos, ListaDoblementeLigada result){
         
-        int a,b,r;
+        float a,b,r;
         String x,y;
         NodoDoble nuevo;
         
         
-            a=(int) uno.retornaDigito();
-            b=(int) dos.retornaDigito();
+            a=(float) uno.retornaDigito();
+            b=(float) dos.retornaDigito();
 //            x=(String) uno.retornaSigno();
 //            y=(String) dos.retornaSigno();
 
@@ -136,8 +136,8 @@ public class Suma {
                 if ((int)uno.retornaPotencia()==0) {
                     uno.asignaDigito(0);
                 } else {
-                    uno.asignaDigito(((int)uno.retornaPotencia()*(int)uno.retornaDigito()));
-                    uno.asignaPotencia(((int)uno.retornaPotencia()-1));
+                    uno.asignaDigito(((float)uno.retornaPotencia()*(float)uno.retornaDigito()));
+                    uno.asignaPotencia(((float)uno.retornaPotencia()-1));
                     //recordatorio en caso de que la potencia sea negativa?
                 }
             }
@@ -156,9 +156,9 @@ public class Suma {
         while(!list.finDeRecorrido(uno)){
             
            
-                uno.asignaPotencia(((int)uno.retornaPotencia()+1));
+                uno.asignaPotencia(((float)uno.retornaPotencia()+1));
                 //sera que guarda tipo int o float por lo del punto flotante
-                uno.asignaDigito(((int)uno.retornaDigito()/(int)uno.retornaPotencia()));
+                uno.asignaDigito(((float)uno.retornaDigito()/(float)uno.retornaPotencia()));
             
                 //recordatorio en caso de que la potencia sea negativa?
             
@@ -169,13 +169,13 @@ public class Suma {
         }
     }
     
-    public int evaluar(ListaDoblementeLigada list, int x){
+    public float evaluar(ListaDoblementeLigada list, int x){
         NodoDoble nod;
-        int result = 0;
+        float result = 0;
         nod=list.primerNodo();
         
         while(!list.finDeRecorrido(nod)){
-            result= (int) Math.pow(((int)nod.retornaDigito()*x), (int)nod.retornaPotencia());
+            result= (float) Math.pow(((float)nod.retornaDigito()*x), (float)nod.retornaPotencia());
             nod=nod.retornaLd();
         }
         return result;
@@ -190,19 +190,19 @@ public class Suma {
         //ingresar un condicional para cuando la derivada llege cero
     }
     
-    public int integralDef(ListaDoblementeLigada list, int x, int y){
+    public float integralDef(ListaDoblementeLigada list, int x, int y){
         
         this.integral(list);
-        int a = this.evaluar(list, x);
-        int b = this.evaluar(list, y);
-        int r = a-b;
+        float a = this.evaluar(list, x);
+        float b = this.evaluar(list, y);
+        float r = a-b;
         return r;
         
     }
     
     public String esFactor(ListaDoblementeLigada list, int c){
        
-        int x = this.evaluar(list, c);
+        float x = this.evaluar(list, c);
         if (x==0) {
             return "Es factor";
         } else {
